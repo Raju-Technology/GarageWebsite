@@ -10,7 +10,9 @@ import GlobalContext from "./Context/Context";
 //Components
 import ScrollToTopButton from "./Components/ScrollToTop"
 
+//pages
 const LandingPage = lazy(()=> import("./Pages/Home/LandingPage"));
+const Robotics = lazy(()=> import("./Pages/Home/Robotics"))
 
 
 
@@ -80,9 +82,12 @@ function App() {
           {
             <main style={{ marginTop: headerHeight, marginBottom: footerHeight }}>
               <ScrollToTopButton />
-              <Routes>
-                 <Route exact path="/" element={<LandingPage />}/>
-              </Routes>
+              <Suspense fallback={<></>}>
+                <Routes>
+                  <Route exact path="/" element={<LandingPage />}/>
+                  <Route path="/home/robotics" element={<Robotics style={{ "--base-color": "#ffeb04" }} />} />
+                </Routes>
+              </Suspense>      
             </main>
           }
         </div> 

@@ -1,3 +1,36 @@
+import Isotope from "isotope-layout";
+
+export const initializeIsotop = (item) => {
+    let filter_menu = item.closest(".grid-wrapper").querySelector(".filter-menu");
+
+    const grid = new Isotope(item, {
+        itemSelector: '.grid-item',
+        layoutMode: 'masonry',
+        percentPosition: true,
+        stagger: 0,
+        masonry: {
+            columnWidth: '.grid-sizer',
+        }
+    })
+
+    setTimeout(() => {
+        grid.arrange({ filter: `*` })
+    }, 1000);
+
+    filter_menu && filter_menu.querySelectorAll("li").forEach((el) => {
+        el.querySelector("span").addEventListener("click", function (e) {
+            let element = e.target,
+                filtered_text = element.getAttribute("data-filter");
+
+            filter_menu.querySelectorAll("li").forEach((elm) => elm.classList.remove("active"))
+            element.closest("li").classList.add("active");
+            grid.arrange({ filter: filtered_text === "*" ? "*" : `.${filtered_text}` })
+        })
+    })
+
+    return grid
+}
+
 export const SetHeaderMenuPos = () => {
     
     function setMegaMenuPos() {
