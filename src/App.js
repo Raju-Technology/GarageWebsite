@@ -13,6 +13,7 @@ import ScrollToTopButton from "./Components/ScrollToTop"
 //pages
 const LandingPage = lazy(()=> import("./Pages/Home/LandingPage"));
 const Robotics = lazy(()=> import("./Pages/Home/Robotics"))
+const WebDevelopment = lazy(()=> import("./Pages/Home/webdevelopment"))
 
 
 
@@ -86,6 +87,7 @@ function App() {
                 <Routes>
                   <Route exact path="/" element={<LandingPage />}/>
                   <Route path="/home/robotics" element={<Robotics style={{ "--base-color": "#ffeb04" }} />} />
+                  <Route path="/home/webdevelopment" element={<WebDevelopment style={{"--base-color": "#ffeb04"}} />}/>
                 </Routes>
               </Suspense>      
             </main>

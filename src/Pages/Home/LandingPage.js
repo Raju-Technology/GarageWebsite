@@ -12,7 +12,7 @@ import AI from "../../Images/AI.png";
 import Robotics from "../../Images/Robotics.png";
 import logo from "../../Images/logo.png"
 import cloud from "../../Images/cloud.png"
-import coding from "../../Images/coding.png"
+import webdevelopment from "../../Images/coding.png"
 import logo2 from "../../Images/logo2.png"
 import Iot from "../../Images/IOT.png"
 
@@ -39,8 +39,8 @@ const InteractiveportfolioPageData = [
   {
     number: "04",
     title: "Coding",
-    img: coding,
-    link: "/portfolio/single-project-page-04",
+    img: webdevelopment,
+    link: "/home/webdevelopment",
   },
   {
     number: "05",
