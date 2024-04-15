@@ -5,13 +5,13 @@ import { Parallax } from 'react-scroll-parallax'
 import { m } from "framer-motion"
 
 //Components
-import { fadeIn, fadeInLeft } from '../../Functions/GlobalAnimations'
-import Header, { HamburgerMenu, HeaderNav } from '../../Components/Header/Header'
+import { fadeIn, fadeInLeft } from '../../Functions/GlobalAnimations';
+import Header, { HamburgerMenu, HeaderNav } from '../../Components/Header/Header';
 import PortfolioOverlay from "../../Components/Portfolio/PortfolioOverlay";
 import ProgressBar from "../../Components/ProgressBar/ProgressBar";
 import SocialIcons from '../../Components/SocialIcon/SocialIcons'
 import ReactCustomScrollbar from "../../Components/ReactCustomScrollbar";
-import {Footer} from "../../Components/Footers/Footer" 
+import {Footer} from "../../Components/Footers/Footer" ;
 import { TextAnime } from "../../Components/FancyText/FancyText";
 import SideButtons from "../../Components/SideButtons";
 
@@ -20,21 +20,23 @@ import { ProgressBarData01 } from "../../Components/ProgressBar/ProgressBarData"
 //Images
 import RoboticsCoverImage from "../../Images/RoboticsCoverImage.png";
 import logo2 from "../../Images/logo2.png";
+import RoboticsBasics from "../../Images/RoboticsBasics.png";
+import RoboticsRealWorldProjects from "../../Images/RoboticsRealWorldProjects.png";
 
 const PortfolioOverlayData = [
     {
-      title: "Daimler",
-      img: "https://via.placeholder.com/800x800",
+      title: "Robotics",
+      img: RoboticsBasics,
       category: [""],
-      subtitle: "Brochure",
-      link: "/portfolio/single-project-page-01"
+      subtitle: "Beginners",
+      link: "/robotics/kids"
     },
     {
-      title: "Waterlly",
-      img: "https://via.placeholder.com/800x800",
+      title: "Real Time",
+      img: RoboticsRealWorldProjects,
       category: [""],
-      subtitle: "Branding",
-      link: "/portfolio/single-project-page-02"
+      subtitle: "Projects",
+      link: "/robotics/real-world-projects"
     },
     {
       title: "Leather",
@@ -50,34 +52,34 @@ const PortfolioOverlayData = [
       subtitle: "Photography",
       link: "/portfolio/single-project-page-04"
     },
-    {
-      title: "Manchester",
-      img: "https://via.placeholder.com/800x800",
-      category: [""],
-      subtitle: "Photography",
-      link: "/portfolio/single-project-page-05"
-    },
-    {
-      title: "Armchair",
-      img: "https://via.placeholder.com/800x800",
-      category: [""],
-      subtitle: "Photography",
-      link: "/portfolio/single-project-page-01"
-    },
-    {
-      title: "Truenorth",
-      img: "https://via.placeholder.com/800x800",
-      category: [""],
-      subtitle: "Identity",
-      link: "/portfolio/single-project-page-02"
-    },
-    {
-      title: "Cortifiel",
-      img: "https://via.placeholder.com/800x800",
-      category: [""],
-      subtitle: "Photography",
-      link: "/portfolio/single-project-page-03"
-    }
+    // {
+    //   title: "Manchester",
+    //   img: "https://via.placeholder.com/800x800",
+    //   category: [""],
+    //   subtitle: "Photography",
+    //   link: "/portfolio/single-project-page-05"
+    // },
+    // {
+    //   title: "Armchair",
+    //   img: "https://via.placeholder.com/800x800",
+    //   category: [""],
+    //   subtitle: "Photography",
+    //   link: "/portfolio/single-project-page-01"
+    // },
+    // {
+    //   title: "Truenorth",
+    //   img: "https://via.placeholder.com/800x800",
+    //   category: [""],
+    //   subtitle: "Identity",
+    //   link: "/portfolio/single-project-page-02"
+    // },
+    // {
+    //   title: "Cortifiel",
+    //   img: "https://via.placeholder.com/800x800",
+    //   category: [""],
+    //   subtitle: "Photography",
+    //   link: "/portfolio/single-project-page-03"
+    // }
   ]
 
   const SocialIconsData = [
@@ -158,10 +160,10 @@ const PortfolioOverlayData = [
                 <h2 className="font-serif font-light -tracking-[2px] text-darkgray uppercase mb-[15px]">Hello,  i am</h2>
                 <div className="font-serif cd-headline push">
                   <h3 className="heading-5 mb-0 text-darkgray font-serif">
-                    <TextAnime color="#232323" duration={3000} className="font-bold text-darkgray uppercase text-[60px] leading-[95px] -tracking-[5px] sm:-tracking-[.5px] lg:text-[90px] lg:leading-[90px] md:text-[70px] md:leading-[65px] sm:text-[45px] sm:leading-[43px]" animation="push" data={["Mechanical", "Machine", "Technological"]} />
+                    <TextAnime color="#232323" duration={3000} className="font-bold text-darkgray uppercase text-[60px] leading-[75px] -tracking-[5px] sm:-tracking-[.5px] lg:text-[90px] lg:leading-[80px] md:text-[70px] md:leading-[60px] sm:text-[30px] sm:leading-[28px]" animation="push" data={["Mechanical", "Machine", "Technological"]} />
                   </h3>
                   <h4 className="heading-5 mb-0 text-darkgray font-serif">
-                    <TextAnime color="#232323" duration={3000} className="font-bold text-darkgray uppercase text-[60px] leading-[95px] -tracking-[5px] sm:-tracking-[.5px] lg:text-[90px] lg:leading-[90px] md:text-[70px] md:leading-[65px] sm:text-[45px] sm:leading-[43px]" animation="push" data={["Companion", "Mate", "Buddy"]} />
+                    <TextAnime color="#232323" duration={3000} className="font-bold text-darkgray uppercase text-[60px] leading-[75px] -tracking-[5px] sm:-tracking-[.5px] lg:text-[90px] lg:leading-[80px] md:text-[70px] md:leading-[60px] sm:text-[30px] sm:leading-[28px]" animation="push" data={["Companion", "Mate", "Buddy"]} />
                   </h4>
                 </div>
                 <div className="left-[15px] absolute bottom-[100px] sm:bottom-[50px] md:bottom-[30px] landscape:md:bottom-0">
@@ -195,7 +197,7 @@ const PortfolioOverlayData = [
         {/* Section End */}
   
         {/* Portfolio Section Start */}
-        <section className="">
+        <section className="" >
           <Container fluid className="px-0">
             <PortfolioOverlay
               overlay="#000"
@@ -207,7 +209,7 @@ const PortfolioOverlayData = [
         {/* Portfolio Section End */}
   
         {/* Progressbar Section Start */}
-        <section className="py-[160px] overflow-hidden bg-[#ffeb04] lg:py-[120px] md:py-[95px] sm:py-[80px] xs:py-[50px]">
+        <section className="py-[160px] overflow-hidden bg-[#ffeb04] lg:py-[120px] md:py-[95px] sm:py-[80px] xs:py-[50px]" >
           <Container>
             <m.div className="row" {...{ ...fadeIn, transition: { delay: 0.4 } }}>
               <Col className="col-lg-5 md:mb-20 sm:mb-16">

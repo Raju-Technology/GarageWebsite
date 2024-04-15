@@ -95,8 +95,28 @@ export const Footer = (props) => {
     )
 }
 
+const FooterMenu = ({ data, titleClass, className, ...props }) => {
+    return (
+        <>
+            {data.map((item, i) => {
+                return (
+                    <Col key={i} {...props} className={`footer-menu${className ? ` ${className}` : ""}`}>
+                        {item.title && <span className={`mb-[20px] block font-medium font-serif xs:!mb-[10px]${titleClass ? ` ${titleClass}` : ""}`}>{item.title}</span>}
+                        <ul>
+                            {item.submenu.map((item, i) => {
+                                return ((item.link || item.title) && <li key={i} className="mb-[7px] last:mb-0"><Link aria-label="footer menu link" to={item.link}>{item.title}</Link></li>)
+                            })}
+                        </ul>
+                    </Col>
+                )
+            })}
+        </>
+    )
+}
+
+
 Footer.defaultProps = {
     theme: "dark"
 }
 
-// export default memo(FooterMenu)
+export default memo(FooterMenu)

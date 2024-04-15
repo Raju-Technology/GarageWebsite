@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
+
+//css
+import "./LandingPage.css"
 
 // Librarie
 import { Link } from 'react-router-dom'
 import { Col, Navbar, Row } from 'react-bootstrap';
+import { Modal,Button } from "antd";
 
 // Components
 import Header, { HamburgerMenu, HeaderNav } from '../../Components/Header/Header';
@@ -16,6 +20,7 @@ import webdevelopment from "../../Images/coding.png"
 import logo2 from "../../Images/logo2.png"
 import Iot from "../../Images/IOT.png"
 
+<<<<<<< HEAD
 // Data
 const InteractiveportfolioPageData = [
   {
@@ -50,12 +55,74 @@ const InteractiveportfolioPageData = [
   },
 ]
 
+=======
+>>>>>>> 2ada042ecbf6d4cac270224fe87b34275def62c9
 const LandingPage = () => {
   const [isHover, setHover] = useState(0);
+  const [age, setAge] = useState(localStorage.getItem('age') === 'true');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [askedAgeQuestion, setAskedAgeQuestion] = useState(localStorage.getItem('askedAgeQuestion') === 'true'); // New state to track if the age question has been asked
+
+  const InteractiveportfolioPageData = [
+    {
+      number: "01",
+      title: "AI",
+      img: AI,
+      link: age ? "/home/AI/Advanced" : "/home/AI",
+    },
+    {
+      number: "02",
+      title: "IOT",
+      img: Iot,
+      link: "/portfolio/single-project-page-03",
+    },
+    {
+      number: "03",
+      title: "Robotics",
+      img: Robotics,
+      link: "/home/robotics",
+    },
+    {
+      number: "04",
+      title: "Coding",
+      img: coding,
+      link: "/portfolio/single-project-page-04",
+    },
+    {
+      number: "05",
+      title: "Cloud",
+      img: cloud,
+      link: "/portfolio/single-project-page-05",
+    },
+  ];
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+    setAge(true);
+    localStorage.setItem('age', 'true');
+    setAskedAgeQuestion(true);
+    localStorage.setItem('askedAgeQuestion', 'true');
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+    setAskedAgeQuestion(true);
+    localStorage.setItem('askedAgeQuestion', 'true');
+  };
+
+  useEffect(() => {
+    if (!age && !askedAgeQuestion) {
+      showModal();
+    }
+  }, [age, askedAgeQuestion]);
 
   const handleMouseEnter = (e, index) => {
-    setHover(index)
-  }
+    setHover(index);
+  };
   return (
     <>
       <SideButtons animation={false} />
@@ -107,6 +174,16 @@ const LandingPage = () => {
         </HeaderNav>
       </Header>
       {/* Header End */}
+
+      <>
+        <Modal title="Basic Modal" open={isModalOpen} onCancel={() => setIsModalOpen(false)} footer={null}>
+          <p>Your Age is greater than 20 ?</p>
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <button className="custom-button" onClick={handleOk} style={{ marginRight: '8px' }}>Yes</button>
+            <button className="custom-button" onClick={handleCancel}>No</button>
+          </div>
+        </Modal>
+      </>
 
       {/* Section Start */}
       <section className="home-interactive-portfolio">
