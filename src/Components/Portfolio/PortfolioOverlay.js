@@ -1,35 +1,40 @@
-import React, { memo, useEffect, useRef, useState } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react';
 import { m } from "framer-motion";
 import { Link } from 'react-router-dom';
 
-//Components
+// Components
 import Filter from './Filter';
 
-//Data
-import {PortfolioOverlayData} from "./PortfolioData"
+// Data
+import { PortfolioOverlayData } from "./PortfolioData";
 
 const PortfolioOverlay = (props) => {
-    const portfolioWrapper = useRef()
-    const [loading, setLoading] = useState(true)
+    const portfolioWrapper = useRef();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         let allImages = portfolioWrapper.current.querySelectorAll("img");
 
         Promise.all(Array.prototype.slice.call(allImages).filter(img => !img.complete).map(img => new Promise(resolve => { img.onload = img.onerror = resolve; }))).then(() => {
             import("../../Functions/Utilities").then(module => {
-                const grid = module.initializeIsotop(portfolioWrapper.current)
+                const grid = module.initializeIsotop(portfolioWrapper.current);
                 grid.on('arrangeComplete', () => setLoading(false));
-            })
+            });
         });
-    }, [])
+    }, []);
 
     const style = {
         "--overlay-color": typeof (props.overlay) === "object" ? `linear-gradient(to right top, ${props.overlay.map(item => item)})` : props.overlay,
-    }
+    };
 
     const handleFilterChange = () => {
-        portfolioWrapper.current.querySelectorAll("li").forEach(item => item.childNodes[0]?.classList.add("appear"))
-    }
+        portfolioWrapper.current.querySelectorAll("li").forEach(item => item.childNodes[0]?.classList.add("appear"));
+    };
+
+    const toggleOverlay = (event) => {
+        const target = event.currentTarget;
+        target.classList.toggle("show-overlay");
+    };
 
     return (
         <div className="grid-wrapper">
@@ -43,7 +48,7 @@ const PortfolioOverlay = (props) => {
                 {
                     props.data.map((item, i) => {
                         return (
-                            <li key={i} className={`grid-item${item.double_col ? " grid-item-double" : ""} ${item.category.toString().split(",").join(" ").toLowerCase()}`}>
+                            <li key={i} className={`grid-item${item.double_col ? " grid-item-double" : ""} ${item.category.toString().split(",").join(" ").toLowerCase()}`} onTouchStart={toggleOverlay} onTouchEnd={toggleOverlay}>
                                 <Link aria-label="link" target={props.target} to={item.link}>
                                     <m.div
                                         className="portfolio-overlay overflow-hidden"
@@ -70,10 +75,10 @@ const PortfolioOverlay = (props) => {
             {/* Grid End */}
         </div>
     )
-}
+};
 
 PortfolioOverlay.defaultProps = {
     data: PortfolioOverlayData,
-}
+};
 
-export default memo(PortfolioOverlay)
+export default memo(PortfolioOverlay);
