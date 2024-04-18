@@ -183,12 +183,20 @@ const HeaderData = [
                 title: 'Pages',
                 dropdown: [
                     {
-                        title: 'AI',
-                        link: '/home/AI'
+                        title: 'AI for Kids',
+                        link: '/home/AI/Kids'
+                    },
+                    {
+                        title: 'AI for Advanced',
+                        link: '/home/AI/Advanced'
                     },
                     {
                         title: 'Robotics',
                         link: '/home/robotics'
+                    },
+                    {
+                        title: 'Robotics Advanced',
+                        link: '/home/robotics/Advanced'
                     },
                     // {
                     //     title: 'Our story',
