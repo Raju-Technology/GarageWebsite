@@ -98,13 +98,14 @@ function App() {
               <ScrollToTopButton />
               <Suspense fallback={<></>}>
                 <Routes>
-                  <Route exact path="/" element={<LandingPage />}/>
-                  <Route path="/home/robotics" element={<Robotics style={{ "--base-color": "#ffeb04" }} />} />
+                  <Route exact path="/" element={<LandingPage age={age} setAge={setAge} askedAgeQuestion={askedAgeQuestion} setAskedAgeQuestion={setAskedAgeQuestion}/>}/> 
+
+                  <Route path="/home/robotics" element={<Robotics style={{ "--base-color": "#ffeb04" }} age={age} setAge={setAge} askedAgeQuestion={askedAgeQuestion} setAskedAgeQuestion={setAskedAgeQuestion} />} />
                   <Route path="/robotics/kids" element={<Robotics1 style={{ "--base-color": "#0038e3" }}/>} />
                   <Route path="/robotics/real-world-projects" element={<Robotics2 style={{ "--base-color": "#0038e3" }}/>} />
                   <Route path="/home/robotics/Advanced" element={<RoboticsAdvanced style={{ "--base-color": "#ffeb04" }} age={age} setAge={setAge} askedAgeQuestion={askedAgeQuestion} setAskedAgeQuestion={setAskedAgeQuestion} />} />
 
-                  <Route path="/home/AI/Advanced" element={<AI style={{ "--base-color": "#ffeb04" }} />} />
+                  <Route path="/home/AI/Advanced" element={<AI style={{ "--base-color": "#E05A8F" }} />} />
                   <Route path="/AI/Exploration" element={<AiExploration style={{ "--base-color": "#0038e3" }} />} />
                   <Route path="/home/AI/Kids" element={<AIKids style={{ "--base-color": "#ffeb04" }} />} />
                   <Route path="/AI/Kids/MachineLearning" element={<MachineLearning style={{ "--base-color": "#0038e3" }} />} />
