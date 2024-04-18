@@ -15,8 +15,15 @@ const LandingPage = lazy(()=> import("./Pages/Home/LandingPage"));
 const Robotics = lazy(()=> import("./Pages/Home/Robotics"))
 const Robotics1 = lazy(()=> import("./Pages/Robotics/Robotics1"))
 const Robotics2 = lazy(()=>import("./Pages/Robotics/Robotics2"))
+const RoboticsAdvanced = lazy(()=> import("./Pages/Home/RoboticsAdvanced"))
+
 const AI = lazy(()=> import("./Pages/Home/AI"))
 const AiExploration = lazy(()=> import("./Pages/AI/AiExploration"))
+const AIKids = lazy(()=> import("./Pages/Home/AIKids"))
+const MachineLearning = lazy(()=> import("./Pages/AI/MachineLearning"))
+const ApplicationUsingLLM = lazy(()=> import("./Pages/AI/ApplicationUsingLLM"))
+const ComputerVision = lazy(()=> import("./Pages/AI/ComputerVision"))
+const AIExplorationKids = lazy(()=> import("./Pages/AI/AIExplorationKids"))
 
 
 function App() {
@@ -28,6 +35,8 @@ function App() {
     isOpen: false
   })
   const location = useLocation();
+  const [age, setAge] = useState(localStorage.getItem('age') === 'true');
+  const [askedAgeQuestion, setAskedAgeQuestion] = useState(localStorage.getItem('askedAgeQuestion') === 'true');
 
   // RetinaJS
   useEffect(() => {
@@ -86,12 +95,19 @@ function App() {
               <ScrollToTopButton />
               <Suspense fallback={<></>}>
                 <Routes>
-                  <Route exact path="/" element={<LandingPage />}/>
-                  <Route path="/home/robotics" element={<Robotics style={{ "--base-color": "#ffeb04" }} />} />
+                  <Route exact path="/" element={<LandingPage age={age} setAge={setAge} askedAgeQuestion={askedAgeQuestion} setAskedAgeQuestion={setAskedAgeQuestion} />}/>
+                  <Route path="/home/robotics" element={<Robotics style={{ "--base-color": "#ffeb04" }} age={age} setAge={setAge} askedAgeQuestion={askedAgeQuestion} setAskedAgeQuestion={setAskedAgeQuestion} />} />
                   <Route path="/robotics/kids" element={<Robotics1 style={{ "--base-color": "#0038e3" }}/>} />
                   <Route path="/robotics/real-world-projects" element={<Robotics2 style={{ "--base-color": "#0038e3" }}/>} />
-                  <Route path="/home/AI" element={<AI style={{ "--base-color": "#ffeb04" }} />} />
-                  <Route path="/AI/Exploration" element={<AiExploration style={{ "--base-color": "#0038e3" }}/>} />
+                  <Route path="/home/robotics/Advanced" element={<RoboticsAdvanced style={{ "--base-color": "#ffeb04" }} age={age} setAge={setAge} askedAgeQuestion={askedAgeQuestion} setAskedAgeQuestion={setAskedAgeQuestion} />} />
+
+                  <Route path="/home/AI/Advanced" element={<AI style={{ "--base-color": "#ffeb04" }} />} />
+                  <Route path="/AI/Exploration" element={<AiExploration style={{ "--base-color": "#0038e3" }} />} />
+                  <Route path="/home/AI/Kids" element={<AIKids style={{ "--base-color": "#ffeb04" }} />} />
+                  <Route path="/AI/Kids/MachineLearning" element={<MachineLearning style={{ "--base-color": "#0038e3" }} />} />
+                  <Route path="/AI/Kids/ApplicationUsingLLM" element={<ApplicationUsingLLM style={{ "--base-color": "#0038e3" }} />} />
+                  <Route path="/AI/Kids/Computer-vision" element={<ComputerVision style={{ "--base-color": "#0038e3" }} />} />
+                  <Route path="/AI/Kids/Exploration" element={<AIExplorationKids style={{ "--base-color": "#0038e3" }} />} />
                 </Routes>
               </Suspense>      
             </main>

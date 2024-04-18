@@ -1,9 +1,20 @@
 .custom-button {
-    border: 1px solid #cccccc; /* Light border color */
+    border: none; /* Light border color */
+    border-radius: 5px;
     color: #333333; /* Dark text color */
     background-color: #f5f5f5; /* Light background color */
-    padding: 6px 16px;
+    padding: 8px 18px;
     cursor: pointer;
+  }
+
+  .custom-button-yes {
+    background-color: rgb(89, 148, 89);
+    color: white;
+  }
+  
+  .custom-button-no {
+    background-color: rgb(161, 34, 34);
+    color: white;
   }
 
   .custom-button:hover {
@@ -11,3 +22,44 @@
     color: white;
     border: none;
   }
+
+  .custom-modal .ant-modal-content {
+    height: 500px;
+    background-color: whitesmoke;
+  }
+
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+  }
+
+  .modal-content h6 {
+    text-align: center;
+    margin-top: 40%;
+  }
+
+  .modal-content .modal-button{
+    margin-top: 20px;
+  }
+
+  .video-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .fullscreen-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire viewport */
+  }
+
+
+  
+  

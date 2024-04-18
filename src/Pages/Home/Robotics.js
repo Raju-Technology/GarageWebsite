@@ -3,6 +3,10 @@ import { Col, Container, Navbar, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Parallax } from 'react-scroll-parallax'
 import { m } from "framer-motion"
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Keyboard } from "swiper/modules";
+import { FloatButton } from "antd";
+import { useNavigate } from 'react-router-dom';
 
 //Components
 import { fadeIn, fadeInLeft } from '../../Functions/GlobalAnimations';
@@ -14,73 +18,69 @@ import ReactCustomScrollbar from "../../Components/ReactCustomScrollbar";
 import {Footer} from "../../Components/Footers/Footer" ;
 import { TextAnime } from "../../Components/FancyText/FancyText";
 import SideButtons from "../../Components/SideButtons";
+import Blockquote from "../../Components/Blockquote/Blockquote";
 
 //Data
 import { ProgressBarData01 } from "../../Components/ProgressBar/ProgressBarData";
+
+
 //Images
 import RoboticsCoverImage from "../../Images/RoboticsCoverImage.png";
 import logo2 from "../../Images/logo2.png";
-import RoboticsBasics from "../../Images/RoboticsBasics.png";
+import Lego from "../../Images/RoboticsBasics.png";
+import Cue from "../../Images/Cue.png"
 import RoboticsRealWorldProjects from "../../Images/RoboticsRealWorldProjects.png";
+import RoboticsSquare from "../../Images/RoboticsSquare.png"
+import RoboticsSlider1 from "../../Images/RoboticsSlider1.png"
+import RoboticsSlider2 from "../../Images/RoboticsSlider2.png"
+import RoboticsSlider3 from "../../Images/RoboticsSlider3.png"
+import RoboticsSlider4 from "../../Images/RoboticsSlider4.png"
 
-const PortfolioOverlayData = [
+// const PortfolioOverlayData = [
+//     {
+//       title: "Robotics",
+//       img: RoboticsBasics,
+//       category: [""],
+//       subtitle: "Beginners",
+//       link: "/robotics/kids"
+//     },
+//     {
+//       title: "Real Time",
+//       img: RoboticsRealWorldProjects,
+//       category: [""],
+//       subtitle: "Projects",
+//       link: "/robotics/real-world-projects"
+//     },
+//     {
+//       title: "Leather",
+//       img: "https://via.placeholder.com/800x800",
+//       category: [""],
+//       subtitle: "Photography",
+//       link: "/portfolio/single-project-page-03"
+//     },
+//     {
+//       title: "Gardner",
+//       img: "https://via.placeholder.com/800x800",
+//       category: [""],
+//       subtitle: "Photography",
+//       link: "/portfolio/single-project-page-04"
+//     },
+//   ]
+
+  const SwiperImgData = [
     {
-      title: "Robotics",
-      img: RoboticsBasics,
-      category: [""],
-      subtitle: "Beginners",
-      link: "/robotics/kids"
+      img: RoboticsSlider1,
     },
     {
-      title: "Real Time",
-      img: RoboticsRealWorldProjects,
-      category: [""],
-      subtitle: "Projects",
-      link: "/robotics/real-world-projects"
+      img: RoboticsSlider2,
     },
     {
-      title: "Leather",
-      img: "https://via.placeholder.com/800x800",
-      category: [""],
-      subtitle: "Photography",
-      link: "/portfolio/single-project-page-03"
+      img: RoboticsSlider3,
     },
     {
-      title: "Gardner",
-      img: "https://via.placeholder.com/800x800",
-      category: [""],
-      subtitle: "Photography",
-      link: "/portfolio/single-project-page-04"
+      img: RoboticsSlider4,
     },
-    // {
-    //   title: "Manchester",
-    //   img: "https://via.placeholder.com/800x800",
-    //   category: [""],
-    //   subtitle: "Photography",
-    //   link: "/portfolio/single-project-page-05"
-    // },
-    // {
-    //   title: "Armchair",
-    //   img: "https://via.placeholder.com/800x800",
-    //   category: [""],
-    //   subtitle: "Photography",
-    //   link: "/portfolio/single-project-page-01"
-    // },
-    // {
-    //   title: "Truenorth",
-    //   img: "https://via.placeholder.com/800x800",
-    //   category: [""],
-    //   subtitle: "Identity",
-    //   link: "/portfolio/single-project-page-02"
-    // },
-    // {
-    //   title: "Cortifiel",
-    //   img: "https://via.placeholder.com/800x800",
-    //   category: [""],
-    //   subtitle: "Photography",
-    //   link: "/portfolio/single-project-page-03"
-    // }
-  ]
+  ];
 
   const SocialIconsData = [
     {
@@ -102,6 +102,26 @@ const PortfolioOverlayData = [
   ]
 
   const Robotics = (props) => {
+
+    const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+      console.log(props.age);
+      console.log("button clicked");
+      const newAgeValue = !props.age;
+      props.setAge(newAgeValue);
+      localStorage.setItem('age', newAgeValue.toString());
+    
+      // Conditionally navigate based on the newAgeValue
+      if (newAgeValue) {
+        // Navigate to "home/Robotics/Advanced"
+        navigate("/home/Robotics/Advanced")
+      } else {
+        // Navigate to "home/Robotics"
+        navigate("/home/Robotics")
+      }
+    };
+
     return (
       <div style={props.style}>
         <SideButtons />
@@ -188,7 +208,7 @@ const PortfolioOverlayData = [
                   <span className="font-serif text-[11rem] leading-[11rem] text-darkgray font-semibold -tracking-[7px] block xs:text-center md:text-[9rem]"><span className="text-[#ffeb04] font-light mr-[35px]">|</span>02<span className="text-[#ffeb04] font-light ml-[35px]">|</span></span>
                 </m.div>
                 <m.div className="text- w-[40%] pl-[25px] xs:w-full md:pl-0"  {...{ ...fadeInLeft, transition: { delay: 0.6, duration: 0.6 } }}>
-                  <h3 className="heading-5 font-serif font-medium text-darkgray mb-0 -tracking-[1px] xs:text-center">Years of Gamified Way Of Teaching</h3>
+                  <h3 className="heading-5 font-serif font-medium text-darkgray mb-0 -tracking-[1px] xs:text-center">Years of Gamified Way Of Coaching</h3>
                 </m.div>
               </Col>
             </Row>
@@ -197,7 +217,7 @@ const PortfolioOverlayData = [
         {/* Section End */}
   
         {/* Portfolio Section Start */}
-        <section className="" >
+        {/* <section className="" >
           <Container fluid className="px-0">
             <PortfolioOverlay
               overlay="#000"
@@ -205,8 +225,174 @@ const PortfolioOverlayData = [
               data={PortfolioOverlayData}
             />
           </Container>
-        </section>
+        </section> */}
         {/* Portfolio Section End */}
+
+        <m.section className="py-[20px] lg:py-[120px] md:py-[95px] sm:py-[80px] xs:py-[50px] overflow-hidden" {...fadeIn}>
+          <Container>
+            <Row>
+              <Col lg={11} xs={12}>
+                <Row className="items-center">
+                  <m.div className="col-12 col-md-6 xs:mb-[30px]" {...fadeIn}>
+                    <img height="" width="" src={RoboticsSquare} alt="" />
+                  </m.div>
+                  <m.div className="col-12 col-md-6 col-xl-5 offset-xl-1" {...fadeInLeft}>
+                    <Blockquote
+                      className="xs:my-0"
+                      theme="blockquote-style-02"
+                      heading="Why Technology Garage for Robotics   "
+                      title="Explore Robotics & Automation at Technology Garage: From Production to Efficiency, Dive into Concise Learning to Master the Basics. Join Us to Fuel Your Tech Passion with Completely Practical, Hands-On, and One-on-One Coaching for All!"
+                    />
+                  </m.div>
+                </Row>
+              </Col>
+            </Row>
+          </Container>
+        </m.section>
+
+        <section className="py-[80px] pb-[130px] lg:pb-[90px] md:pb-[75px] sm:py-[50px]">
+        <Container>
+            <Row className="justify-center">
+              <Col className="col-12 col-lg-11">
+                <m.div {...fadeIn} className="row">
+                  <Col lg={4} className="pr-[5%] lg:pr-[15px] md:mb-[50px]">
+                    <h5 className="font-serif text-darkgray font-medium mb-16 -tracking-[1px]">
+                    Building Creativity and Innovation in Kids
+                    </h5>
+                  </Col>
+                  <Col lg={{ span: 7, offset: 1 }}>
+                    <span className="font-serif text-md uppercase font-medium mb-[20px] inline-block text-darkgray">Lego – Showcase your Imagination</span>
+                    <p className="mb-[25px] text-justify xs:text-left xs:mb-[15px]">
+                    Discover the magic of LEGO robotics, where kids learn by building, step by step. Starting with simple blocks, they create robots that move and interact, learning about mechanics and programming along the way.
+                    </p>
+                    <p className="mb-[25px] text-justify xs:text-left xs:mb-[15px]">
+                    This type of robotics isn't just about building – it's about sparking creativity. Kids experiment with designs, turning blocks into unique creations that showcase their imagination.
+                    </p>
+                    <p >
+                      Through individual or teamwork and problem-solving, kids collaborate to overcome challenges, building valuable skills for the future. With this robotics, learning is fun, engaging, and full of endless possibilities.
+                    </p>
+                    {/* <Buttons ariaLabel="button" href="#" className="font-medium font-serif uppercase btn-link after:h-[2px] after:bg-darkgray hover:text-darkgray" color="#232323" title="Yourdomain.com" size="lg" /> */}
+                  </Col>
+                </m.div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+
+        <m.section className="py-[20px] lg:py-[120px] md:py-[95px] sm:py-[80px] xs:py-[50px] overflow-hidden" {...fadeIn}>
+          <Container>
+            <Row>
+              <Col lg={11} xs={12}>
+                <Row className="items-center">
+                  <m.div className="col-12 col-md-6 xs:mb-[30px]" {...fadeIn}>
+                    <img height="" width="" src={Lego} alt="" />
+                  </m.div>
+                  <m.div className="col-12 col-md-6 col-xl-5 offset-xl-1" {...fadeInLeft}>
+                    <Blockquote
+                      className="xs:my-0"
+                      theme="blockquote-style-02"
+                      heading="Building Dreams: A Kid's Playful Creation with Robotics"
+                      title="In the world of imagination and innovation, a young mind explores endless possibilities with LEGO Robotics, crafting their own unique structure that embodies creativity, curiosity, and boundless potential."
+                    />
+                  </m.div>
+                </Row>
+              </Col>
+            </Row>
+          </Container>
+        </m.section>
+
+        <section className="py-[80px] pb-[130px] lg:pb-[90px] md:pb-[75px] sm:py-[50px]">
+        <Container>
+            <Row className="justify-center">
+              <Col className="col-12 col-lg-11">
+                <m.div {...fadeIn} className="row">
+                  <Col lg={4} className="pr-[5%] lg:pr-[15px] md:mb-[50px]">
+                    <h5 className="font-serif text-darkgray font-medium mb-16 -tracking-[1px]">
+                    Cue: Your Gateway to Robotic Mastery
+                    </h5>
+                  </Col>
+                  <Col lg={{ span: 7, offset: 1 }}>
+                    <span className="font-serif text-md uppercase font-medium mb-[20px] inline-block text-darkgray">Cue – Showcase your Imagination</span>
+                    <p className="mb-[25px] text-justify xs:text-left xs:mb-[15px]">
+                    Dive into the realm of Cue, the real robot that transforms coding into a tangible adventure! Seamlessly connect via Bluetooth and immerse yourself in the world of block coding, where each task unfolds from simplicity to complexity. With expert guidance, Cue nurtures creativity and problem-solving skills, laying the foundation for a future brimming with innovation. And beyond mastering block code, this journey ignites a passion for sequential thought processes, paving the way to explore even deeper realms, like JavaScript.
+                    </p>
+                    {/* <Buttons ariaLabel="button" href="#" className="font-medium font-serif uppercase btn-link after:h-[2px] after:bg-darkgray hover:text-darkgray" color="#232323" title="Yourdomain.com" size="lg" /> */}
+                  </Col>
+                </m.div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+
+        <m.section className="py-[20px] lg:py-[120px] md:py-[95px] sm:py-[80px] xs:py-[50px] overflow-hidden" {...fadeIn}>
+          <Container>
+            <Row>
+              <Col lg={11} xs={12}>
+                <Row className="items-center">
+                  <m.div className="col-12 col-md-6 xs:mb-[30px]" {...fadeIn}>
+                    <img height="" width="" src={Cue} alt="" />
+                  </m.div>
+                  <m.div className="col-12 col-md-6 col-xl-5 offset-xl-1" {...fadeInLeft}>
+                    <Blockquote
+                      className="xs:my-0"
+                      theme="blockquote-style-02"
+                      heading="Mastering Cue: Your Journey in Robotic Programming"
+                      title="Step into the world of Cue, the real robot that makes coding tangible! Connect via Bluetooth and dive into programming with block coding. From simple tasks to complex challenges, guided by expert coaches, Cue unlocks creativity and problem-solving skills, paving the way for a future of innovation."
+                    />
+                  </m.div>
+                </Row>
+              </Col>
+            </Row>
+          </Container>
+        </m.section>
+
+        <section className="py-[70px] relative">
+          <Swiper
+            slidesPerView="auto"
+            speed={1000}
+            loop={true}
+            modules={[Autoplay, Keyboard]}
+            autoplay={{ delay: 1500, disableOnInteraction: false }}
+            keyboard={{ enabled: true, onlyInViewport: true }}
+            spaceBetween={10}
+            centeredSlides={true}
+            breakpoints={{
+              576: {
+                spaceBetween: 20
+              },
+              768: {
+                spaceBetween: 30
+              }
+            }}
+            className="SingleProjectPage05 relative black-move"
+          >
+            {SwiperImgData.map((item, i) => {
+              return (
+                <SwiperSlide className="w-[55%] sm:w-[65%]" key={i}>
+                  <img height="" width="" src={item.img} alt="" />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </section>
+
+        <section className="py-[130px] lg:py-[90px] md:py-[75px] sm:py-[50px]" >
+                <Container>
+                    <Row className="justify-between">
+                        <m.div {...fadeIn} className="col-12 col-lg-4 col-md-7 col-sm-9 md:mb-[35px]">
+                            <h6 className="font-serif text-darkgray font-medium m-0">Embark on an Exploration: Discover the Endless Possibilities of Robotics and Automation Today!"</h6>
+                        </m.div>
+                        <m.div {...{ ...fadeIn, transition: { delay: 0.5 } }} className="col-12 col-xl-3 col-lg-4 col-md-6 sm:mb-[30px]">
+                            <div className="flex font-serif text-darkgray mb-[15px] font-medium"><span className="flex-shrink-0 self-center h-[1px] w-[40px] bg-[#ff6437] mr-[20px]"></span><div className="grow">The Challenge</div></div>
+                            <p className="md:w-[80%] xs:w-full">Embrace the challenge of mastering robotics—a journey of innovation and discovery. Overcome obstacles, unlock potential, and dive into the future of technology with determination.</p>
+                        </m.div>
+                        <m.div {...{ ...fadeIn, transition: { delay: 0.6 } }} className="col-12 col-xl-3 col-lg-4 col-md-6">
+                            <div className="flex font-serif text-darkgray mb-[15px] font-medium"><span className="flex-shrink-0 self-center h-[1px] w-[40px] bg-[#ff6437] mr-[20px]"></span><div className="grow">The Approach</div></div>
+                            <p className="md:w-[80%] xs:w-full">Simplify robotics for beginners with our easy approach: step-by-step guidance and hands-on learning to build confidence and ignite curiosity.</p>
+                        </m.div>
+                    </Row>
+                </Container>
+            </section>
   
         {/* Progressbar Section Start */}
         <section className="py-[160px] overflow-hidden bg-[#ffeb04] lg:py-[120px] md:py-[95px] sm:py-[80px] xs:py-[50px]" >
@@ -236,6 +422,17 @@ const PortfolioOverlayData = [
           </Container>
         </section>
         {/* Section End */}
+
+        <div style={{ position: "fixed", bottom: 24, right: 24, zIndex: 1000 }}>
+        <button
+            shape="circle"
+            type="primary"
+            onClick={handleButtonClick}
+            style={{ boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", padding:"10px", color:"black"}}
+          >
+            Switch Age
+        </button>
+        </div>
   
         {/* Footer Start */}
         <Footer className="bg-[#ffeb04] py-20" theme="light">
