@@ -10,13 +10,16 @@ import GlobalContext from "./Context/Context";
 //Components
 import ScrollToTopButton from "./Components/ScrollToTop"
 
+
 //pages
 const LandingPage = lazy(()=> import("./Pages/Home/LandingPage"));
 const Robotics = lazy(()=> import("./Pages/Home/Robotics"))
-const Robotics1 = lazy(()=> import("./Pages/Robotics/Robotics1"))
-const Robotics2 = lazy(()=>import("./Pages/Robotics/Robotics2"))
+const WebDevelopment = lazy(()=> import("./Pages/Home/webdevelopment"))
 const RoboticsAdvanced = lazy(()=> import("./Pages/Home/RoboticsAdvanced"))
 
+
+const Robotics1 = lazy(()=> import("./Pages/Robotics/Robotics1"))
+const Robotics2 = lazy(()=>import("./Pages/Robotics/Robotics2"))
 const AI = lazy(()=> import("./Pages/Home/AI"))
 const AiExploration = lazy(()=> import("./Pages/AI/AiExploration"))
 const AIKids = lazy(()=> import("./Pages/Home/AIKids"))
@@ -95,20 +98,22 @@ function App() {
               <ScrollToTopButton />
               <Suspense fallback={<></>}>
                 <Routes>
-                  <Route exact path="/" element={<LandingPage age={age} setAge={setAge} askedAgeQuestion={askedAgeQuestion} setAskedAgeQuestion={setAskedAgeQuestion} />}/>
+                  <Route exact path="/" element={<LandingPage age={age} setAge={setAge} askedAgeQuestion={askedAgeQuestion} setAskedAgeQuestion={setAskedAgeQuestion}/>}/> 
+
                   <Route path="/home/robotics" element={<Robotics style={{ "--base-color": "#ffeb04" }} age={age} setAge={setAge} askedAgeQuestion={askedAgeQuestion} setAskedAgeQuestion={setAskedAgeQuestion} />} />
                   <Route path="/robotics/kids" element={<Robotics1 style={{ "--base-color": "#0038e3" }}/>} />
                   <Route path="/robotics/real-world-projects" element={<Robotics2 style={{ "--base-color": "#0038e3" }}/>} />
                   <Route path="/home/robotics/Advanced" element={<RoboticsAdvanced style={{ "--base-color": "#ffeb04" }} age={age} setAge={setAge} askedAgeQuestion={askedAgeQuestion} setAskedAgeQuestion={setAskedAgeQuestion} />} />
 
-                  <Route path="/home/AI/Advanced" element={<AI style={{ "--base-color": "#ffeb04" }} />} />
+                  <Route path="/home/AI/Advanced" element={<AI style={{ "--base-color": "#E05A8F" }} />} />
                   <Route path="/AI/Exploration" element={<AiExploration style={{ "--base-color": "#0038e3" }} />} />
                   <Route path="/home/AI/Kids" element={<AIKids style={{ "--base-color": "#ffeb04" }} />} />
                   <Route path="/AI/Kids/MachineLearning" element={<MachineLearning style={{ "--base-color": "#0038e3" }} />} />
                   <Route path="/AI/Kids/ApplicationUsingLLM" element={<ApplicationUsingLLM style={{ "--base-color": "#0038e3" }} />} />
                   <Route path="/AI/Kids/Computer-vision" element={<ComputerVision style={{ "--base-color": "#0038e3" }} />} />
                   <Route path="/AI/Kids/Exploration" element={<AIExplorationKids style={{ "--base-color": "#0038e3" }} />} />
-                </Routes>
+                  <Route path="/home/webdevelopment" element={<WebDevelopment style={{ "--base-color": "#5CE1E6" }} />} />
+                  </Routes>
               </Suspense>      
             </main>
           }
