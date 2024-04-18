@@ -20,43 +20,6 @@ import webdevelopment from "../../Images/coding.png"
 import logo2 from "../../Images/logo2.png"
 import Iot from "../../Images/IOT.png"
 
-<<<<<<< HEAD
-// Data
-const InteractiveportfolioPageData = [
-  {
-    number: "01",
-    title: "AI",
-    img: AI,
-    link: "/portfolio/single-project-page-01",
-  },
-  {
-    number: "02",
-    title: "IOT",
-    img: Iot,
-    link: "/portfolio/single-project-page-03",
-  },
-  {
-    number: "03",
-    title: "Robotics",
-    img: Robotics,
-    link: "/home/robotics",
-  },
-  {
-    number: "04",
-    title: "Coding",
-    img: webdevelopment,
-    link: "/home/webdevelopment",
-  },
-  {
-    number: "05",
-    title: "Cloud",
-    img: cloud,
-    link: "/portfolio/single-project-page-05",
-  },
-]
-
-=======
->>>>>>> 2ada042ecbf6d4cac270224fe87b34275def62c9
 const LandingPage = () => {
   const [isHover, setHover] = useState(0);
   const [age, setAge] = useState(localStorage.getItem('age') === 'true');
@@ -85,8 +48,8 @@ const LandingPage = () => {
     {
       number: "04",
       title: "Coding",
-      img: coding,
-      link: "/portfolio/single-project-page-04",
+      img: webdevelopment,
+      link: "/home/webdevelopment",
     },
     {
       number: "05",

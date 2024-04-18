@@ -10,6 +10,7 @@ import GlobalContext from "./Context/Context";
 //Components
 import ScrollToTopButton from "./Components/ScrollToTop"
 
+
 //pages
 const LandingPage = lazy(()=> import("./Pages/Home/LandingPage"));
 const Robotics = lazy(()=> import("./Pages/Home/Robotics"))
@@ -18,6 +19,8 @@ const WebDevelopment = lazy(()=> import("./Pages/Home/webdevelopment"))
 
 const Robotics1 = lazy(()=> import("./Pages/Robotics/Robotics1"))
 const Robotics2 = lazy(()=>import("./Pages/Robotics/Robotics2"))
+const Webdevelopment1 = lazy(()=> import("./Pages/webdevelopment/webdevelopment1"))
+const Webdevelopment2 = lazy(()=> import("./Pages/webdevelopment/webdevelopment2"))
 const AI = lazy(()=> import("./Pages/Home/AI"))
 const AiExploration = lazy(()=> import("./Pages/AI/AiExploration"))
 
@@ -91,7 +94,9 @@ function App() {
                 <Routes>
                   <Route exact path="/" element={<LandingPage />}/>
                   <Route path="/home/robotics" element={<Robotics style={{ "--base-color": "#ffeb04" }} />} />
-                  <Route path="/home/webdevelopment" element={<WebDevelopment style={{"--base-color": "#ffeb04"}} />}/>
+                  <Route path="/home/webdevelopment" element={<WebDevelopment style={{"--base-color": "#00F0F0"}} />}/>
+                  <Route path="/webdevelopment/Kids" element={<Webdevelopment1 style={{"--base-color": "#ffeb04"}} />}/>
+                  <Route path="/webdevelopment/real-world" element={<Webdevelopment2 style={{"--base-color": "#ffeb04"}} />}/>
                   <Route path="/robotics/kids" element={<Robotics1 style={{ "--base-color": "#0038e3" }}/>} />
                   <Route path="/robotics/real-world-projects" element={<Robotics2 style={{ "--base-color": "#0038e3" }}/>} />
                   <Route path="/home/AI" element={<AI style={{ "--base-color": "#ffeb04" }} />} />
